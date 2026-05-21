@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AD MATRIX — Premium Multi-Tool Hub</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #070913;
+      --panel-dark: rgba(13, 17, 39, 0.7);
+      --border-dark: rgba(255, 255, 255, 0.06);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      
+      /* Glowing Neon Colors */
+      --neon-primary: #8b5cf6; /* Purple */
+      --neon-secondary: #06b6d4; /* Cyan */
+      --neon-glow: linear-gradient(135deg, #8b5cf6, #06b6d4);
+      
+      --radius: 24px;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    * { box-sizing: border-box; transition: all 0.25s ease; }
+    html, body { margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: var(--text-main); overflow-x: hidden; }
+
+    /* Futuristic Background Grid */
+    body {
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 40%),
+        linear-gradient(to bottom, #070913, #0c0f24);
+      background-attachment: fixed;
+    }
+
+    .container { width: min(1200px, calc(100% - 32px)); margin: 0 auto; }
+
+    /* Premium Header */
+    header {
+      padding: 20px 0;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-dark);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      background: var(--neon-glow);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 1px;
+    }
+    .live-badge {
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid var(--neon-secondary);
+      color: var(--neon-secondary);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .live-dot { width: 8px; height: 8px; background: var(--neon-secondary); border-radius: 50%; box-shadow: 0 0 10px var(--neon-secondary); }
+
+    /* Hero Section */
+    .hero { text-align: center; padding: 60px 0 30px; }
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      margin: 0 0 16px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+    .hero h1 span { background: var(--neon-glow); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 30px; }
+
+    /* 💎 ADSTERRA ADS TOP SLOT PLACEHOLDER */
+    .ad-slot-top {
+      max-width: 728px;
+      margin: 10px auto 40px;
+      min-height: 90px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px dashed rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Grid Layout for Tools */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+      margin-bottom: 50px;
+    }
+
+    /* Premium Glassmorphic Cards */
+    .tool-card {
+      background: var(--panel-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+    .tool-card::before {
+      content: ''; position: absolute; inset: 0; border-radius: var(--radius); padding: 1px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent, rgba(255,255,255,0.03));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+    }
+    .tool-card:hover { transform: translateY(-5px); border-color: rgba(139, 92, 246, 0.3); box-shadow: 0 30px 60px rgba(139, 92, 246, 0.1); }
+
+    .tool-icon {
+      font-size: 2rem; margin-bottom: 16px; display: inline-block;
+      background: var(--neon-glow); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .tool-card h3 { margin: 0 0 10px; font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; }
+    .tool-card p { margin: 0 0 20px; color: var(--text-muted); font-size: 0.92rem; line-height: 1.5; }
+
+    /* Inputs & Buttons Custom styling */
+    .input-group { position: relative; margin-bottom: 16px; }
+    input {
+      width: 100%; padding: 14px 16px; background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-dark); border-radius: 14px;
+      color: white; font-family: inherit; font-size: 0.95rem; outline: none;
+    }
+    input:focus { border-color: var(--neon-secondary); box-shadow: 0 0 15px rgba(6, 182, 212, 0.15); }
+    
+    .btn {
+      width: 100%; border: none; padding: 14px; border-radius: 14px;
+      font-family: inherit; font-weight: 700; font-size: 0.95rem; cursor: pointer;
+      background: var(--neon-glow); color: white; box-shadow: 0 8px 20px rgba(139, 92, 246, 0.25);
+    }
+    .btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn:active { transform: scale(0.98); }
+
+    /* Results Panel */
+    .result-box {
+      margin-top: 16px; padding: 14px; background: rgba(6, 182, 212, 0.05);
+      border: 1px solid rgba(6, 182, 212, 0.15); border-radius: 12px;
+      display: none; align-items: center; justify-content: space-between; font-size: 0.9rem;
+    }
+    .result-box span { font-weight: 600; color: var(--neon-secondary); word-break: break-all; }
+    .copy-btn { background: none; border: none; color: white; cursor: pointer; font-weight: bold; font-size: 0.85rem; text-decoration: underline; }
+
+    /* 💎 ADSTERRA NATIVE BANNER PLACEHOLDER */
+    .ad-slot-middle {
+      margin: 40px 0; min-height: 180px;
+      background: rgba(255, 255, 255, 0.01); border: 1px dashed rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius); display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); font-size: 0.85rem;
+    }
+
+    /* Footer Stats */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      margin-bottom: 50px; text-align: center;
+    }
+    .stat-box { background: rgba(255, 255, 255, 0.02); padding: 20px; border-radius: 16px; border: 1px solid var(--border-dark); }
+    .stat-box strong { display: block; font-size: 1.6rem; font-family: 'Space Grotesk', sans-serif; color: var(--neon-secondary); margin-bottom: 4px; }
+    .stat-box span { font-size: 0.85rem; color: var(--text-muted); }
+
+    footer { text-align: center; padding: 40px 0; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border-dark); }
+
+    @media (max-width: 768px) {
+      .tools-grid { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">AD MATRIX</div>
+      </div>
+      <div class="live-badge">
+        <span class="live-dot"></span> ⚡ Premium Server Active
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <section class="hero">
+      <h1>The Ultimate <span>Premium Utility</span> Portal</h1>
+      <p>Instant tools for smart people. Shorten premium URLs, generate ultra-secure keys, and test your text formatting on the fly.</p>
+      
+      <div class="ad-slot-top">
+        <div>[ Advertisement Space — Place Adsterra Banner Here ]</div>
+      </div>
+    </section>
+
+    <section class="tools-grid">
+      
+      <div class="tool-card">
+        <div class="tool-icon">🔗</div>
+        <h3>Premium URL Shortener</h3>
+        <p>Shorten your long download links into clean, high-speed premium matrix URLs instantly.</p>
+        <div class="input-group">
+          <input type="text" id="longUrl" placeholder="Paste your long link here...">
+        </div>
+        <button class="btn" onclick="shortenUrl()">Generate Matrix Link</button>
+        <div class="result-box" id="shortenResult">
+          <span id="shortUrlText">admatrix.hub/short/7x92</span>
+          <button class="copy-btn" onclick="copyLink('shortUrlText')">Copy</button>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">🔐</div>
+        <h3>Secure Pass Key Generator</h3>
+        <p>Generate highly encrypted, unbreakable secret passwords or chat keys instantly.</p>
+        <div class="input-group">
+          <input type="text" id="keyResultDisplay" placeholder="Your secure key will appear here..." readonly>
+        </div>
+        <button class="btn" onclick="generateKey()">Generate Encrypted Key</button>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">🔤</div>
+        <h3>Smart Text Transformer</h3>
+        <p>Quickly convert your titles or paragraphs into pure Uppercase, Lowercase, or Clean formatting.</p>
+        <div class="input-group">
+          <input type="text" id="textInput" placeholder="Enter text to convert...">
+        </div>
+        <button class="btn" onclick="convertText()">Convert to Uppercase</button>
+      </div>
+
+    </section>
+
+    <div class="ad-slot-middle">
+      <div>[ Advertisement Space — Place Adsterra Native Banner Here ]</div>
+    </div>
+
+    <section class="stats-row">
+      <div class="stat-box">
+        <strong>14,284+</strong>
+        <span>Global Server Requests</span>
+      </div>
+      <div class="stat-box">
+        <strong>0.02s</strong>
+        <span>Average Response Time</span>
+      </div>
+      <div class="stat-box">
+        <strong>100%</strong>
+        <span>Uptime Guaranteed</span>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    &copy; 2026 AD MATRIX Hub • Premium Edition • Designed for High-Speed Monetization
+  </footer>
+
+  <script>
+    // 🔗 URL Shortener Logic
+    function shortenUrl() {
+      const input = document.getElementById('longUrl').value.trim();
+      if(input === "") { alert("Please enter a valid URL first!"); return; }
+      
+      // Generating a premium fake aesthetic short link
+      const randomId = Math.random().toString(36).substring(2, 7);
+      const outputText = "https://admatrix.net/secure/" + randomId;
+      
+      document.getElementById('shortUrlText').innerText = outputText;
+      document.getElementById('shortenResult').style.display = "flex";
+    }
+
+    // 🔐 Key Generator Logic
+    function generateKey() {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+      let password = "";
+      for (let i = 0; i < 14; i++) {
+        password += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      document.getElementById('keyResultDisplay').value = password;
+    }
+
+    // 🔤 Text Converter Logic
+    function convertText() {
+      const input = document.getElementById('textInput').value;
+      if(input.trim() === "") { alert("Please enter some text!"); return; }
+      document.getElementById('textInput').value = input.toUpperCase();
+    }
+
+    // Copy Functionality
+    function copyLink(elementId) {
+      const text = document.getElementById(elementId).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Matrix Link copied to clipboard!");
+      });
+    }
+  </script>
+</body>
+</html>
